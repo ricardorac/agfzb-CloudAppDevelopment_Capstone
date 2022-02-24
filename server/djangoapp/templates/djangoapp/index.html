@@ -35,7 +35,7 @@
             {% if user.is_authenticated %}
             <ul class="navbar-nav  my-2 my-lg-0">
                 <li class="nav-item">
-                    {{ user.first_name }}({{ user.username }}) <a class="btn btn-link" href="">Logout</a>
+                    {{ user.first_name }}({{ user.username }}) <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
                 </li>
             </ul>
             {% else %}
