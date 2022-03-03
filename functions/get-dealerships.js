@@ -1,9 +1,9 @@
 function main(params) {
 
     secret = {
-        "COUCH_URL": "https://a0f0b8c0-8cb1-4db9-ad9a-601deb21f958-bluemix.cloudantnosqldb.appdomain.cloud",
-        "IAM_API_KEY": "hQRO4quEkJaBXuInpXy1D22U4mVZOOs1dKmYkqQAOe_z",
-        "COUCH_USERNAME": "a0f0b8c0-8cb1-4db9-ad9a-601deb21f958-bluemix"
+        "COUCH_URL": "",
+        "IAM_API_KEY": "",
+        "COUCH_USERNAME": ""
     };
 
     return new Promise(function (resolve, reject) {
