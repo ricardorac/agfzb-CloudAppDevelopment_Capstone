@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from server.djangoapp.models import CarMake, CarModel
+from djangoapp.models import CarMake, CarModel
 # from .models import related models
 
 
