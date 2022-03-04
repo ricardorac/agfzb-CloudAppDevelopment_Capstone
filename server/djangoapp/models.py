@@ -56,3 +56,4 @@ class DealerReview:
     car_make: str
     car_model: str
     car_year: date
+    sentiment: str
