@@ -5,7 +5,7 @@ from djangoapp.models import CarMake, CarModel
 
 
 # Register your models here.
-admin.site.register(CarMake)
+#admin.site.register(CarMake)
 
 # CarModelInline class
 class CarModelInline(admin.StackedInline):
@@ -23,3 +23,4 @@ class CarMakeAdmin(admin.ModelAdmin):
 
 # Register models here
 admin.site.register(CarModel, CarModelAdmin)
+admin.site.register(CarMake, CarMakeAdmin)
