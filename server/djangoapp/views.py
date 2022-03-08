@@ -106,7 +106,8 @@ def get_dealer_details(request, dealer_id):
         dealer_url = API_URL + "/get-dealers"
         
         dealer = get_dealer_by_id(dealer_url, dealerId=dealer_id)
-        context["dealer"] = dealer
+        if len(dealer) > 0:
+            context["dealer"] = dealer[0]
         
         reviews = get_dealer_reviews_from_cf(url, dealerId=dealer_id)
         context["reviews"] = reviews
