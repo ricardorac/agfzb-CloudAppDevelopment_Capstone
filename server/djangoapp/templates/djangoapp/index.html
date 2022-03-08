@@ -14,43 +14,64 @@
 </head>
 
     <body>
-    <!-- Remove this line the first time you edit this file -->
-     This is the index page of your Django app!
+
     <!--Add a nav bar here -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Best Cars</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Best Cars</a>
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/djangoapp/about">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/djangoapp/contact">Contact Us</a>
-                </li>
-            </ul>
-            {% if user.is_authenticated %}
-            <ul class="navbar-nav  my-2 my-lg-0">
-                <li class="nav-item">
-                    {{ user.first_name }}({{ user.username }}) <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
-                </li>
-            </ul>
-            {% else %}
-            <form action="{% url 'djangoapp:login' %}"  method="post" class="form-inline my-2 my-lg-0">
-                {% csrf_token %}
-                <input class="form-control mr-sm-2" type="text" placeholder="username" aria-label="Username" name="username">
-                <input class="form-control mr-sm-2" type="password" placeholder="password" aria-label="Password" name="psw">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
-                <a href="{% url 'djangoapp:registration' %}" class="btn btn-light my-2 my-sm-0">Sign Up</button>
-            </form>
-            {% endif %}
-        </div>
-    </nav>
-
-    <!--Add a dealer table here -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/djangoapp/about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/djangoapp/contact">Contact Us</a>
+                    </li>
+                </ul>
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav  my-2 my-lg-0">
+                    <li class="nav-item">
+                        {{ user.first_name }}({{ user.username }}) <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
+                    </li>
+                </ul>
+                {% else %}
+                <form action="{% url 'djangoapp:login' %}"  method="post" class="form-inline my-2 my-lg-0">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" type="text" placeholder="username" aria-label="Username" name="username">
+                    <input class="form-control mr-sm-2" type="password" placeholder="password" aria-label="Password" name="psw">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
+                    <a href="{% url 'djangoapp:registration' %}" class="btn btn-light my-2 my-sm-0">Sign Up</button>
+                </form>
+                {% endif %}
+            </div>
+        </nav>
+        <table>
+            <thead>
+                <tr>
+                    <th data-field="id">ID</th>
+                    <th data-field="full_name">Dealer Name</th>
+                    <th data-field="city">City</th>
+                    <th data-field="address">Address</th>
+                    <th data-field="zip">Zip</th>
+                    <th data-field="state">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dealer in dealerships %}
+                <tr>
+                    <td>{{dealer.id}}</td>
+                    <td><a href="{% url 'djangoapp:dealer_details' dealer.id %}">{{dealer.full_name}}</a></td>
+                    <td>{{dealer.city}}</td>
+                    <td>{{dealer.address}}</td>
+                    <td>{{dealer.zip}}</td>
+                    <td>{{dealer.state}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
     </body>
 
