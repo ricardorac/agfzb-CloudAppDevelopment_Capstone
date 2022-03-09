@@ -47,7 +47,7 @@ class CarDealer:
 # <HINT> Create a plain Python class `DealerReview` to hold review data
 @dataclass
 class DealerReview:
-    id: int
+#    id: int
     name: str
     dealership: int
     review:str
