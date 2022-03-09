@@ -30,10 +30,10 @@ def get_dealers_from_cf(url, **kwargs):
         dealers = json_result["body"]
         # For each dealer object
         for dealer in dealers:
-            dealer_obj = CarDealer(address=dealer["address"], city=dealer["city"], full_name=dealer["full_name"],
-                                   id=dealer["id"], lat=dealer["lat"], long=dealer["long"],
-                                   short_name=dealer["short_name"],
-                                   st=dealer["st"], zip=dealer["zip"], state=dealer["state"])
+            dealer_obj = CarDealer(address=dealer.get("address", ""), city=dealer.get("city", ""), full_name=dealer.get("full_name", ""),
+                                    id=dealer.get("id", None), lat=dealer.get("lat", None), long=dealer.get("long", None),
+                                    short_name=dealer.get("short_name", ""),
+                                    st=dealer.get("st", ""), zip=dealer.get("zip", ""), state=dealer.get("state", ""))
             results.append(dealer_obj)
 
     return results
@@ -48,10 +48,10 @@ def get_dealers_by_state(url, state, **kwargs):
         dealers = json_result["body"]
         # For each dealer object
         for dealer in dealers:
-            dealer_obj = CarDealer(address=dealer["address"], city=dealer["city"], full_name=dealer["full_name"],
-                                   id=dealer["id"], lat=dealer["lat"], long=dealer["long"],
-                                   short_name=dealer["short_name"],
-                                   st=dealer["st"], zip=dealer["zip"], state=dealer["state"])
+            dealer_obj = CarDealer(address=dealer.get("address", ""), city=dealer.get("city", ""), full_name=dealer.get("full_name", ""),
+                                    id=dealer.get("id", None), lat=dealer.get("lat", None), long=dealer.get("long", None),
+                                    short_name=dealer.get("short_name", ""),
+                                    st=dealer.get("st", ""), zip=dealer.get("zip", ""), state=dealer.get("state", ""))
             results.append(dealer_obj)
 
     return results
@@ -66,10 +66,10 @@ def get_dealer_by_id(url, dealerId, **kwargs):
         dealers = json_result["body"]
         for dealer in dealers:
             if dealerId == dealer["id"]:
-                dealer_obj = CarDealer(address=dealer["address"], city=dealer["city"], full_name=dealer["full_name"],
-                                        id=dealer["id"], lat=dealer["lat"], long=dealer["long"],
-                                        short_name=dealer["short_name"],
-                                        st=dealer["st"], zip=dealer["zip"], state=dealer["state"])
+                dealer_obj = CarDealer(address=dealer.get("address", ""), city=dealer.get("city", ""), full_name=dealer.get("full_name", ""),
+                                        id=dealer.get("id", None), lat=dealer.get("lat", None), long=dealer.get("long", None),
+                                        short_name=dealer.get("short_name", ""),
+                                        st=dealer.get("st", ""), zip=dealer.get("zip", ""), state=dealer.get("state", ""))
         results.append(dealer_obj)
 
     return results
@@ -98,10 +98,10 @@ def get_dealer_reviews_from_cf(url, dealerId, **kwargs):
         reviews = json_result["body"]["data"]
         # For each dealer object
         for review in reviews:
-            review_obj = DealerReview(name=review["name"], dealership=review["dealership"],
-                                        review=review["review"], purchase=review["purchase"],
-                                        purchase_date=review["purchase_date"], car_make=review["car_make"],
-                                        car_model=review["car_model"], car_year=review["car_year"], sentiment="")
+            review_obj = DealerReview(name=review.get("name", ""), dealership=review.get("dealership", None),
+                                        review=review.get("review", ""), purchase=review.get("purchase", False),
+                                        purchase_date=review.get("purchase_date", None), car_make=review.get("car_make", ""),
+                                        car_model=review.get("car_model", None), car_year=review.get("car_year", None), sentiment="")
             
             review_obj.sentiment = analyze_review_sentiments(review_obj.review)
             results.append(review_obj)
