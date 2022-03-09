@@ -121,7 +121,8 @@ def add_review(request, dealer_id):
     context = {}
     dealer_url = API_URL + "/get-dealers"
     dealer = get_dealer_by_id(dealer_url, dealerId=dealer_id)
-    context["dealer"] = dealer
+    if len(dealer) > 0:
+        context["dealer"] = dealer[0]
     
     if request.method == 'GET':
         # Get cars for the dealer
@@ -156,4 +157,4 @@ def add_review(request, dealer_id):
             payload["review"] = review
             review_post_url = API_URL + "/post-review"
             post_request(review_post_url, payload, dealerId=dealer_id)
-        return redirect("djangoapp:dealer_details", id=dealer_id)
+        return redirect("djangoapp:dealer_details", dealer_id=dealer_id)
