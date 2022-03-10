@@ -127,3 +127,5 @@ MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = "https://ricardocost3-8000.theiadocker-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai"
