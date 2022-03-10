@@ -13,29 +13,29 @@
 
 </head>
     <body>
+        <div class="container">
         <h1>Sign Up</h1>
         <hr>
         <form action="{% url 'djangoapp:registration' %}" method="post">
             {% csrf_token %}
-            <h1>Sign Up</h1>
             <div class="form-group">
-                <label for="username"><b>User Name</b></label>
-                <input type="text" placeholder="Enter User Name: " name="username" required>
+                <label for="username"><b>Enter User Name: </b></label>
+                <input class="form-control" type="text" placeholder="User Name" name="username" required>
             </div>
             <div class="form-group">
-                <label for="firstname"><b>First Name</b></label>
-                <input type="text" placeholder="Enter First Name: " name="firstname" required>
+                <label for="firstname"><b>Enter First Name: </b></label>
+                <input class="form-control" type="text" placeholder="First Name" name="firstname" required>
             </div>
             <div class="form-group">
-                <label for="lastname"><b>Last Name</b></label>
-                <input type="text" placeholder="Enter Last Name: " name="lastname" required>
+                <label for="lastname"><b>Enter Last Name: </b></label>
+                <input class="form-control" type="text" placeholder="Last Name" name="lastname" required>
             </div>
             <div class="form-group">
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password: " name="psw" required>
+                <label for="psw"><b>Enter Password: </b></label>
+                <input class="form-control" type="password" placeholder="Password" name="psw" required>
             </div>
-            <button class="button" type="submit">Sign Up</button>
-          </form>
-          
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+        </form>
+        </div> 
     </body>
 </html>
